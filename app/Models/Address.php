@@ -3,19 +3,19 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class User extends Model
+class Address extends Model
 {
     //
-    protected $table = 'users';
+    protected $table = 'addresses';
     protected $primaryKey = 'id';
     protected $keyType = 'string';
     public $incrementing = false;
     public $timestamps = true;
 
-    public function contacts(): HasMany
+    public function contact(): BelongsTo
     {
-        return $this->hasMany(Contact::class, 'user_id', 'id');
+        return $this->belongsTo(Contact::class, 'contact_id', 'id');
     }
 }
